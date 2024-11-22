@@ -16,7 +16,7 @@ def addUser(id, register_time, count_of_get_spam, username):
 
         with connection.cursor() as cursor:
             cursor.execute(f""" 
-                    INSERT INTO users(id, time, count, username) VALUES (
+                    INSERT INTO EXMA(id, time, count, username) VALUES (
                            {id},
                            {register_time},
                            {count_of_get_spam},
@@ -42,7 +42,7 @@ def checkUsers():
 
         with connection.cursor() as cursor:
             cursor.execute(f"""
-                           SELECT * FROM users 
+                           SELECT * FROM EXMA 
                            WHERE date_trunc('day', to_timestamp(time) + interval '1 seconds') = date_trunc('day', now() AT TIME ZONE 'UTC')""");
             result = cursor.fetchall()
             for r in result:
